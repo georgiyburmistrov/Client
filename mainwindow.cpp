@@ -29,6 +29,7 @@ void MainWindow::SendToServer(QString str)
     out.setVersion(QDataStream::Qt_5_12);
     out << str;
     socket -> write(Data);
+    ui -> lineEdit -> clear();
 }
 
 void MainWindow::slotReadyRead()
@@ -45,5 +46,17 @@ void MainWindow::slotReadyRead()
     {
         ui -> textBrowser -> append("read error");
     }
+}
+
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    SendToServer(ui -> lineEdit->text());
+}
+
+
+void MainWindow::on_lineEdit_returnPressed()
+{
+    SendToServer(ui -> lineEdit->text());
 }
 
