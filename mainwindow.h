@@ -23,5 +23,10 @@ private:
     Ui::MainWindow *ui;
     QTcpSocket *socket;
     QByteArray Data;
+    void SendToServer(QString str);
+
+public slots:
+    void slotReadyRead();
+
 };
 #endif // MAINWINDOW_H
